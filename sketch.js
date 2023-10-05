@@ -46,6 +46,6 @@ class Pelota {
   display() {
     fill(255, 100, 0);
     circle(this.posX, this.posY, this.diametro, this.diametro);
-    
+  
   }
 }
