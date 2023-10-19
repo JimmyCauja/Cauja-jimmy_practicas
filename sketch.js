@@ -1,6 +1,6 @@
 // var dspX = 0;
 // var dspY = 10000;
-var inc = 0.01;
+var inc = 0.09;
 var start = 0;
 
 function setup() {
@@ -8,7 +8,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(100,150);
   stroke(255);
   noFill();
   beginShape();
