@@ -1,51 +1,38 @@
-let p1;
-let p2;
+// var dspX = 0;
+// var dspY = 10000;
+var inc = 0.01;
+var start = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  p1 = new Pelota(200, 200 * 0.2, 20);
-  p2 = new Pelota(300, 200 * 0.2, 20);
 }
 
 function draw() {
-  background(255, 150, 70);
-  noStroke();
-  fill(100, 50, 0);
-  rectMode(CENTER);
-  rect(windowWidth / 2, windowHeight - 60, windowWidth, 50);
-  p1.actualizar();
-  p1.display();
-  p2.actualizar();
-  p2.display();
+  background(0);
+  stroke(255);
+  noFill();
+  beginShape();
+  var dspX = start;
+  for (var x = 0; x < windowWidth; x++) {
+    stroke(255);
+    var y = noise(dspX) * height;
+    vertex(x, y);
 
+    dspX += inc;
+  }
+  endShape();
+  start += inc;
+
+  // nooLoop();
 }
+  //   var x = map(noise(dspX), 0, 1, 0, windowWidth);
+  //   var y = map(noise(dspY), 0, 1, 0, windowHeight);
+  //   var coli = color(50, random(53, 160), random(151, 250));
 
-class Pelota {
-  constructor(posX, posY, diametro) {
-    this.posX = posX;
-    this.posY= posY;
-    this.diametro = diametro;
-    this.radio = this.diametro / 2;
-    this.velocidad = 0;
-    this.esp = 50;
-    this.margen = 60;
-    this.aceleracion = 0.98;
-    this.piso = windowHeight - this.margen - this.esp /2;
-  }
+  //   dspX += 0.01;
+  //   dspY += 0.01;
 
-  actualizar() {
-    this.velocidad += this.aceleracion;
-    this.posY += this.velocidad;
+  //   ellipse(x, y, 24, 24);
+  //   fill(coli)
+  // }
 
-    if (this.posY >= this.piso - this.radio) {
-      this.velocidad *= -1;
-      this.posY += this.velocidad;
-    }
-  }
-
-  display() {
-    fill(255, 100, 0);
-    circle(this.posX, this.posY, this.diametro, this.diametro);
-  
-  }
-}
