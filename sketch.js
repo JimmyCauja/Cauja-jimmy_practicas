@@ -29,5 +29,14 @@ function draw() {
   stroke(243, 159, 90, 30);
   strokeWeight(2);
   line(posX1, reflY1, posX2, reflY2, tamrefl);
-  
+
+  let posX3 = map(noise(noiseTime + 100), 0, 1, 0, windowWidth);
+  let posY3 = map(noise(noiseTam + 50), 0, 1, 0, windowHeight);
+  let tamcir = map(noise(noiseTam + 1), 0, 1, 0, 0,5);
+
+  fill(0, 21, 36);
+  stroke(200, 204, 10, 50);
+  strokeWeight(3);
+  circle(posX3, posY3, tamcir);
+
 }
